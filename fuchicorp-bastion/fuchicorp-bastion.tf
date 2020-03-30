@@ -38,6 +38,9 @@ resource "google_compute_instance" "vm_instance" {
   curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kubectl
   mv kubectl /usr/bin
   chmod +x /usr/bin/kubectl
+  
+  sudo yum install bind-utils -y
+
 
   wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
   unzip  terraform_0.11.7_linux_amd64.zip
