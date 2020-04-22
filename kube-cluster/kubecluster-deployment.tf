@@ -6,7 +6,7 @@ data "google_container_engine_versions" "cluster_version" {
   location       = "us-central1-a"
 }
 
-resource "google_container_cluster" "cluster_fuchicorp_com" {
+resource "google_container_cluster" "tunscotech_cluster" {
   name               = "${var.cluster_name}"
   network            = "default"
   subnetwork         = "default"

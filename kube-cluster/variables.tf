@@ -7,7 +7,7 @@ variable "node_count" {
 }
 
 variable "google_project_id" {
-  default = "universal-team-245120"
+  default = "bustling-art-272102"
 }
 
 variable "service_account_path" {
