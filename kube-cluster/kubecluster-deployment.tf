@@ -11,7 +11,7 @@ resource "google_container_cluster" "cluster_fuchicorp_com" {
   network            = "default"
   subnetwork         = "default"
   location           = "us-central1-a"
-  node_version = "${data.google_container_engine_versions.cluster_version.latest_node_version}"
+  min_master_version = "${data.google_container_engine_versions.cluster_version.latest_node_version}"
   initial_node_count = "${var.node_count}"
   project            = "${var.google_project_id}"
 
