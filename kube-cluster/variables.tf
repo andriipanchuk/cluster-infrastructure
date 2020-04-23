@@ -19,5 +19,5 @@ variable "region" {
 }
 
 variable "google_bucket_name" {
-  default = "fuchicorp-bucket"
+  default = "ola-buckets"
 }
