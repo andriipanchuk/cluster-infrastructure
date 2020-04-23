@@ -15,7 +15,7 @@ variable "service_account_path" {
 }
 
 variable "region" {
-  default = "us-central1"
+  default = "us-central1-a"
 }
 
 variable "google_bucket_name" {
