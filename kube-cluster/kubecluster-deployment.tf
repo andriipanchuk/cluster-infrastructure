@@ -1,7 +1,6 @@
 provider "google" {
   credentials = "${file("./fuchicorp-service-account.json")}" #GOOGLE_CREDENTIALS to the path of a file containing the credential JSON
   project     = "${var.google_project_id}"
-  region      = "${var.region}"
 }
 data "google_container_engine_versions" "cluster_version" {
   location       = "us-central1-a"
