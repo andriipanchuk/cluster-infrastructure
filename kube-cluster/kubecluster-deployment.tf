@@ -3,6 +3,9 @@ data "google_container_engine_versions" "cluster_version" {
   version_prefix = "1.15."
   project        = "${var.google_project_id}"
 }
+output "version" {
+  value = "${data.google_container_engine_versions.cluster_version.latest_node_version}"
+}
 
 
 provider "google" {
@@ -24,3 +27,4 @@ resource "google_container_cluster" "tunscotech-cluster" {
     machine_type = "n1-standard-2"
   }
 }
+ 
