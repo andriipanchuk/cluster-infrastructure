@@ -19,5 +19,9 @@ variable "region" {
 }
 
 variable "google_bucket_name" {
-  default = "ola-buckets"
+  default = "fuchicorp-bucket"
+}
+
+variable "cluster_version" {
+  default = "1.13.11-gke.9"
 }

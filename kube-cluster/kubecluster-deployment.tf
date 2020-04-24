@@ -1,6 +1,9 @@
 data "google_container_engine_versions" "cluster_version" {
-  location       = "us-central1-a"
+  location       = "us-central1-b"
+  version_prefix = "1.15."
+  project        = "${var.google_project_id}"
 }
+
 
 provider "google" {
   credentials = "${file("./fuchicorp-service-account.json")}" #GOOGLE_CREDENTIALS to the path of a file containing the credential JSON
@@ -13,7 +16,7 @@ resource "google_container_cluster" "tunscotech-cluster" {
   name               = "${var.cluster_name}"
   network            = "default"
   subnetwork         = "default"
-  location             = "${var.region}"
+  location           = "${var.region}"
   min_master_version = "${data.google_container_engine_versions.cluster_version.latest_node_version}"
   initial_node_count = "${var.node_count}"
   project            = "${var.google_project_id}"
