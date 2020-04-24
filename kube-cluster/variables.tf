@@ -15,7 +15,7 @@ variable "service_account_path" {
 }
 
 variable "region" {
-  default = "us-central1"
+  default = "us-central1-a"
 }
 
 variable "google_bucket_name" {
@@ -23,5 +23,5 @@ variable "google_bucket_name" {
 }
 
 variable "cluster_version" {
-  default = "1.13.11-gke.9"
+  default = "1.15"
 }
