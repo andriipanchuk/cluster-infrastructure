@@ -11,7 +11,7 @@ variable "google_project_id" {
 }
 
 variable "service_account_path" {
-  default = "./decoded-pride-276102-13713b4c7db2.json"
+  default = "./fuchicorp-service-account.json"
 }
 
 variable "region" {

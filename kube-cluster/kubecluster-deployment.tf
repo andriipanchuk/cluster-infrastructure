@@ -8,7 +8,7 @@ output "version" {
 }
 
 provider "google" {
-  credentials = "${file("./decoded-pride-276102-13713b4c7db2.json")}" #GOOGLE_CREDENTIALS to the path of a file containing the credential JSON
+  credentials = "${file("./fuchicorp-service-account.json")}" #GOOGLE_CREDENTIALS to the path of a file containing the credential JSON
   project     = "${var.google_project_id}"
 }
 
