@@ -42,7 +42,7 @@ resource "google_compute_instance" "vm_instance" {
   sudo yum install bind-utils -y
 
 
-  wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip
+  wget https://releases.hashicorp.com/terraform/0.11.14/terraform_0.11.14_linux_amd64.zip --no-check-certificate
   unzip  terraform_0.11.14_linux_amd64.zip
   mv terraform /usr/bin
   chmod +x /usr/bin/terraform
