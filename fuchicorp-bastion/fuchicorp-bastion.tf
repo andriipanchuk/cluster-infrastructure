@@ -10,8 +10,10 @@ resource "google_compute_instance" "vm_instance" {
 
   boot_disk {
     initialize_params {
+      size = "${var.instance_disk_zie}" 
       image = "centos-cloud/centos-7"
     }
+
   }
 
   network_interface {
@@ -75,10 +77,10 @@ resource "null_resource" "local_generate_kube_config" {
     wget https://raw.githubusercontent.com/fuchicorp/common_scripts/master/set-environments/kubernetes/set-kube-config.sh 
     ENDPOINT=$(kubectl get endpoints kubernetes | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
     bash set-kube-config.sh $ENDPOINT
-    ssh fsadykov@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip} sudo mkdir /fuchicorp | echo 'Folder exist'
-    scp -r  "admin_config"   fsadykov@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip}:~/
-    scp -r  "view_config"   fsadykov@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip}:~/
-    ssh fsadykov@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip} sudo mv -f *config /fuchicorp/
+    ssh ${var.gce_ssh_user}@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip} sudo mkdir /fuchicorp | echo 'Folder exist'
+    scp -r  "admin_config"   ${var.gce_ssh_user}@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip}:~/
+    scp -r  "view_config"   ${var.gce_ssh_user}@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip}:~/
+    ssh ${var.gce_ssh_user}@${google_compute_instance.vm_instance.network_interface.0.access_config.0.nat_ip} sudo mv -f ~/*config /fuchicorp/
     rm -rf set-kube-config*
 EOF
   }
